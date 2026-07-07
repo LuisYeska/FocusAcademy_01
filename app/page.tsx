@@ -226,7 +226,7 @@ export default function LandingPage() {
               <button onClick={() => handleNav('programas')} className="hover:text-black transition-colors">Programas</button>
               <button onClick={() => handleNav('horario')} className="hover:text-black transition-colors">Horarios</button>
               <button onClick={() => handleNav('filiales')} className="hover:text-black transition-colors">Filiales</button>
-              <a href="https://wa.me/56945908324?text=Hola%20Focus%20Academy!%20Me%20gustar%C3%ADa%20agendar%20una%20clase%20de%20prueba%20gratis." target="_blank" className="bg-red-600 text-white hover:bg-red-700 shadow-red-600/20 shadow-lg px-6 py-3 rounded-xl transition-all font-black">Agenda Gratis</a>
+              <a href="https://wa.me/56945908324?text=Hola%20Focus%20Academy!%20Me%20gustar%C3%ADa%20agendar%20una%20clase%20de%20prueba%20gratis." target="_blank" className="bg-red-600 text-white hover:bg-red-700 shadow-red-600/20 shadow-lg px-6 py-3 rounded-xl transition-all font-black">Agenda Clase</a>
             </div>
 
             {/* Botón Menú Móvil */}
