@@ -246,7 +246,7 @@ export default function LandingPage() {
                 <button onClick={() => handleNav('programas')} className="text-left">Programas</button>
                 <button onClick={() => handleNav('horario')} className="text-left">Horarios</button>
                 <button onClick={() => handleNav('filiales')} className="text-left">Filiales</button>
-                <a href="https://wa.me/56945908324" target="_blank" className="bg-red-600 text-white text-center py-4 rounded-xl font-black shadow-lg shadow-red-600/20">Agenda Gratis</a>
+                <a href="https://wa.me/56945908324" target="_blank" className="bg-red-600 text-white text-center py-4 rounded-xl font-black shadow-lg shadow-red-600/20">Agenda Clase</a>
               </div>
             </motion.div>
           )}
@@ -272,7 +272,7 @@ export default function LandingPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-6">
                 <a href="https://wa.me/56945908324?text=Hola%20Focus%20Academy!%20Me%20gustar%C3%ADa%20agendar%20una%20clase%20de%20prueba%20gratis." target="_blank" className="group relative inline-flex items-center justify-center bg-red-600 text-white px-10 py-5 rounded-xl font-black text-lg transition-all hover:bg-red-700 shadow-lg shadow-red-600/10 overflow-hidden">
-                  <span className="relative z-10">Agenda Clase Gratis</span>
+                  <span className="relative z-10">Agenda Tu Clase</span>
                   <div className="absolute inset-0 bg-white/5 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                 </a>
                 <button onClick={() => handleNav('programas')} className="inline-flex items-center justify-center px-10 py-5 rounded-xl border-2 border-black/10 hover:bg-black/5 font-black text-lg transition-all text-black">
