@@ -226,7 +226,7 @@ export default function LandingPage() {
               <button onClick={() => handleNav('programas')} className="hover:text-black transition-colors">Programas</button>
               <button onClick={() => handleNav('horario')} className="hover:text-black transition-colors">Horarios</button>
               <button onClick={() => handleNav('filiales')} className="hover:text-black transition-colors">Filiales</button>
-              <a href="https://wa.me/56945908324?text=Hola%20Focus%20Academy!%20Me%20gustar%C3%ADa%20agendar%20una%20clase%20de%20prueba%20gratis." target="_blank" className="bg-red-600 text-white hover:bg-red-700 shadow-red-600/20 shadow-lg px-6 py-3 rounded-xl transition-all font-black">Agenda Clase</a>
+              <a href="https://wa.me/56945908324?text=Hola%20Focus%20Academy!%20Me%20gustar%C3%ADa%20agendar%20una%20clase%20de%20prueba." target="_blank" className="bg-red-600 text-white hover:bg-red-700 shadow-red-600/20 shadow-lg px-6 py-3 rounded-xl transition-all font-black">Agenda Clase</a>
             </div>
 
             {/* Botón Menú Móvil */}
@@ -271,7 +271,7 @@ export default function LandingPage() {
                 La academia de Jiu-Jitsu más moderna de Chile. Un espacio diseñado para tu transformación física, mental y técnica.
               </p>
               <div className="flex flex-col sm:flex-row gap-6">
-                <a href="https://wa.me/56945908324?text=Hola%20Focus%20Academy!%20Me%20gustar%C3%ADa%20agendar%20una%20clase%20de%20prueba%20gratis." target="_blank" className="group relative inline-flex items-center justify-center bg-red-600 text-white px-10 py-5 rounded-xl font-black text-lg transition-all hover:bg-red-700 shadow-lg shadow-red-600/10 overflow-hidden">
+                <a href="https://wa.me/56945908324?text=Hola%20Focus%20Academy!%20Me%20gustar%C3%ADa%20agendar%20una%20clase%20de%20prueba." target="_blank" className="group relative inline-flex items-center justify-center bg-red-600 text-white px-10 py-5 rounded-xl font-black text-lg transition-all hover:bg-red-700 shadow-lg shadow-red-600/10 overflow-hidden">
                   <span className="relative z-10">Agenda Tu Clase</span>
                   <div className="absolute inset-0 bg-white/5 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                 </a>
