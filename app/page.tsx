@@ -110,10 +110,10 @@ export default function LandingPage() {
 
   // Imágenes que rotan en la sección principal
   const heroImages = [
-    "/images/IMG_2613.JPEG",
-    "/images/IMG_2628.JPEG",
-    "/images/IMG_2630.JPEG",
-    "/images/IMG_4540.JPG.jpeg"
+    "/images/hero-1.jpg",
+    "/images/hero-2.jpg",
+    "/images/hero-3.jpg",
+    "/images/hero-4.jpg"
   ];
 
   // Efecto para ocultar la pantalla de carga después de 8 segundos
