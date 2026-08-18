@@ -46,18 +46,10 @@ const SCHEDULE_DATA = [
 const INSTRUCTORS_DATA = [
   { name: "Johanan Carreño", role: "Head Instructor", rank: "Black Belt", specialty: "Escuela Focus Central", image: "/images/profesores/headcouch.jpeg" },
   { name: "Daniel García", role: "Kids Program Director", rank: "Brown Belt", specialty: "Escuela Focus", image: "/images/profesores/fiestoso.png" },
-  { name: "Diego Felipe", role: "Fundamentals Coach", rank: "Brown Belt", specialty: "Escuela Focus", image: "/images/profesores/Diego Felipe.png" },
-  { name: "Francisca Martinez", role: "Women's Program", rank: "Black Belt", specialty: "Escuela Triada", image: "/images/profesores/fran.png" },
-  { name: "Alan Magendzo", role: "No-Gi Specialist", rank: "Black Belt", specialty: "Escuela Focus", image: "/images/profesores/alan.png" },
   { name: "Christian Marin", role: "BJJ Instructor", rank: "Black Belt", specialty: "Escuela Focus Independencia", image: "/images/profesores/Christian Marin.png" },
-  { name: "Andrés Canales", role: "BJJ Instructor", rank: "Black Belt", specialty: "Escuela Corso", image: "/images/profesores/Andrés Canales.png" },
   { name: "Diego Lobos", role: "BJJ Instructor", rank: "Black Belt", specialty: "Escuela Focus", image: "/images/profesores/Diego Lobos.png" },
-  { name: "Federico Noguera", role: "BJJ Instructor", rank: "Black Belt", specialty: "Escuela Corso", image: "/images/profesores/Federico Noguera .png" },
-  { name: "Ivan Noguera", role: "BJJ Instructor", rank: "Black Belt", specialty: "Escuela Corso", image: "/images/profesores/Ivan Noguera.png" },
-  { name: "Pablo Leon", role: "BJJ Instructor", rank: "Black Belt", specialty: "Escuela Raion BJJ", image: "/images/profesores/Pablo Leon.jpeg" },
   { name: "Esteban Pardo", role: "BJJ Instructor", rank: "Black Belt", specialty: "Escuela Animal Grip", image: "/images/profesores/negrito.png" },
-  { name: "Sebastián Cadena", role: "Submission Specialist", rank: "Brown Belt", specialty: "Escuela Focus", image: "/images/profesores/Seba Cadenas.png" },
-  { name: "Ricardo Cardoso", role: "BJJ Instructor", rank: "Black Belt", specialty: "Escuela Olas Combat", image: "/images/profesores/Ricardo Cardoso.png" }
+  { name: "Sebastián Cadena", role: "Submission Specialist", rank: "Brown Belt", specialty: "Escuela Focus", image: "/images/profesores/Seba Cadenas.png" }
 ];
 
 // Listado de Academias Filiales
