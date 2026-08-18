@@ -513,6 +513,7 @@ export default function LandingPage() {
               <ul className="space-y-6">
                 <FooterContactItem icon={<MapPin size={20} className="text-red-600" />} text="Providencia, Santiago, Chile" />
                 <FooterContactItem icon={<Phone size={20} className="text-red-600" />} text="+56 9 4590 8324" />
+                <FooterContactItem icon={<MapPin size={20} className="text-red-600" />} text="Próximamente La Reina" />
               </ul>
             </div>
 
