@@ -58,7 +58,7 @@ const INSTRUCTORS_DATA = [
 const AFFILIATES_DATA = [
   { name: "Animal Grip", image: "/Logos/filiales/animalgrip.png", url: "https://www.instagram.com/animal_grip/", location: "Conchalí" },
   { name: "Corso BJJ", image: "/Logos/filiales/corsobjj.png", url: "https://corsobjj.cl/", location: "Las Condes" },
-  { name: "Entreno Jiu-Jitsu", image: "/Logos/filiales/entrenojiujitsu.png", url: "https://www.instagram.com/entrenojiujitsu/", location: "" },
+  { name: "Entreno Jiu-Jitsu", image: "/Logos/filiales/entrenojiujitsu.png", url: "https://www.instagram.com/entrenajiujitsu/", location: "" },
   { name: "Focus Independencia", image: "/Logos/filiales/focusindependencia.png", url: "https://www.instagram.com/focus_independencia/", location: "Independencia" },
   { name: "Raion BJJ", image: "/Logos/filiales/raionbjj.png", url: "https://www.raionbjj.cl/", location: "Lo Barnechea" },
   { name: "Triada Jiu-Jitsu", image: "/Logos/filiales/triadajiujitsu.png", url: "https://triadajiujitsu.cl/", location: "Ñuñoa" },
