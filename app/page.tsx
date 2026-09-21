@@ -437,7 +437,7 @@ export default function LandingPage() {
               <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse" />
               Planificación
             </div>
-            <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter italic text-black">Horario Elite</h2>
+            <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter italic text-black">Horarios Focus Academy</h2>
           </div>
 
           <div className="bg-white rounded-[3rem] p-5 sm:p-10 border-2 border-zinc-200 shadow-2xl relative overflow-hidden">
