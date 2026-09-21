@@ -35,11 +35,79 @@ import {
 
 // Información del Horario semanal
 const SCHEDULE_DATA = [
-  { time: "07:00 - 08:30", mon: "BJJ Fundamentos", tue: "Wrestling", wed: "BJJ Fundamentos", thu: "Wrestling", fri: "BJJ Fundamentos", sat: "Open Mat", sun: "Cerrado" },
-  { time: "09:00 - 10:30", mon: "BJJ Avanzado", tue: "Judo", wed: "BJJ Avanzado", thu: "Judo", fri: "BJJ Avanzado", sat: "BJJ Mixto", sun: "Cerrado" },
-  { time: "17:00 - 18:00", mon: "Focus Kids", tue: "Focus Kids", wed: "Focus Kids", thu: "Focus Kids", fri: "Focus Kids", sat: "Cerrado", sun: "Cerrado" },
-  { time: "18:30 - 20:00", mon: "BJJ Fundamentos", tue: "Leglocks", wed: "BJJ Fundamentos", thu: "Leglocks", fri: "BJJ Fundamentos", sat: "Cerrado", sun: "Cerrado" },
-  { time: "20:00 - 21:30", mon: "BJJ Avanzado", tue: "Wrestling", wed: "BJJ Avanzado", thu: "Wrestling", fri: "BJJ Avanzado", sat: "Cerrado", sun: "Cerrado" },
+  {
+    day: "Lunes",
+    classes: [
+      { time: "07:30", name: "Clases Particulares" },
+      { time: "10:00", name: "Clases Particulares" },
+      { time: "13:00", name: "BJJ Gi Avanzados" },
+      { time: "16:00", name: "Clases Particulares" },
+      { time: "18:00", name: "BJJ Gi Juvenil", note: "13 a 17 años" },
+      { time: "19:00", name: "BJJ Gi Fundamentos" },
+      { time: "20:15", name: "BJJ Gi All Levels" },
+    ],
+  },
+  {
+    day: "Martes",
+    classes: [
+      { time: "07:30", name: "Clases Particulares" },
+      { time: "10:00", name: "Clases Particulares" },
+      { time: "13:00", name: "BJJ No Gi Avanzados" },
+      { time: "17:15", name: "BJJ Gi Kids", note: "4 a 6 años" },
+      { time: "18:15", name: "BJJ Gi Cadetes", note: "7 a 12 años" },
+      { time: "19:15", name: "BJJ No Gi Fundamentos" },
+      { time: "20:30", name: "BJJ No Gi All Levels" },
+    ],
+  },
+  {
+    day: "Miércoles",
+    classes: [
+      { time: "07:30", name: "BJJ Gi Fundamentos" },
+      { time: "10:00", name: "Clases Particulares" },
+      { time: "13:00", name: "BJJ Gi Avanzados" },
+      { time: "16:00", name: "Clases Particulares" },
+      { time: "18:00", name: "BJJ Gi Juvenil", note: "13 a 17 años" },
+      { time: "19:00", name: "BJJ Gi All Levels" },
+      { time: "20:15", name: "BJJ Gi Takedowns" },
+    ],
+  },
+  {
+    day: "Jueves",
+    classes: [
+      { time: "07:30", name: "Clases Particulares" },
+      { time: "10:00", name: "Clases Particulares" },
+      { time: "13:00", name: "BJJ No Gi Takedowns" },
+      { time: "17:15", name: "BJJ Gi Kids", note: "4 a 6 años" },
+      { time: "18:15", name: "BJJ Gi Cadetes", note: "7 a 12 años" },
+      { time: "19:30", name: "BJJ No Gi All Levels" },
+    ],
+  },
+  {
+    day: "Viernes",
+    classes: [
+      { time: "07:30", name: "BJJ Gi Fundamentos" },
+      { time: "10:00", name: "Clases Particulares" },
+      { time: "13:00", name: "BJJ Gi All Levels" },
+      { time: "16:00", name: "Clases Particulares" },
+      { time: "17:30", name: "BJJ No Gi Leg Lock Attacks" },
+      { time: "18:45", name: "BJJ Gi All Levels" },
+    ],
+  },
+  {
+    day: "Sábado",
+    classes: [
+      { time: "09:30", name: "BJJ Gi Cadete", note: "7 a 12 años" },
+      { time: "10:30", name: "BJJ Gi Kids", note: "4 a 6 años" },
+      { time: "11:30", name: "BJJ Gi Juvenil", note: "13 a 17 años" },
+      { time: "12:30", name: "BJJ Gi & No Gi Solo Luchas" },
+    ],
+  },
+  {
+    day: "Domingo",
+    classes: [
+      { time: "11:00", name: "BJJ No Gi Fundamentos" },
+    ],
+  },
 ];
 
 // Listado de Profesores (Nombre, Rol, Cinturón, Escuela, Imagen)
@@ -50,7 +118,6 @@ const INSTRUCTORS_DATA = [
   { name: "Diego Lobos", role: "BJJ Instructor", rank: "Black Belt", specialty: "Escuela Focus", image: "/images/profesores/Diego Lobos.png" },
   { name: "Esteban Pardo", role: "BJJ Instructor", rank: "Black Belt", specialty: "Escuela Animal Grip", image: "/images/profesores/negrito.png" },
   { name: "Sebastián Cadena", role: "Submission Specialist", rank: "Brown Belt", specialty: "Escuela Focus", image: "/images/profesores/Seba Cadenas.png" },
-  { name: "Ricardo Soto", role: "BJJ Instructor", rank: "Brown Belt", specialty: "Escuela Focus", image: "/images/profesores/Ricardo Soto.jpeg" },
   { name: "Ricardo Soto", role: "BJJ Instructor", rank: "Brown Belt", specialty: "Escuela Focus", image: "/images/profesores/Ricardo Soto.jpeg" }
 ];
 
@@ -73,20 +140,18 @@ const AFFILIATES_DATA = [
  * Esta función determina el color de fondo y texto de cada celda del horario
  * basándose en el nombre de la clase.
  */
-const getCellStyles = (text: string) => {
-  if (!text || text === "Cerrado" || text === "-") return "flex flex-col items-center justify-center h-full opacity-10";
-  
-  const base = "flex flex-col gap-1.5 p-4 rounded-2xl border w-full h-full transition-all duration-500 hover:scale-[1.03] hover:shadow-xl cursor-default group relative overflow-hidden";
-  
-  if (text.includes("Fundamentos")) return `${base} bg-gradient-to-br from-red-50 to-white border-red-100 text-red-700 shadow-sm`;
-  if (text.includes("Avanzado")) return `${base} bg-slate-50 border-slate-200 text-slate-800 shadow-sm`;
-  if (text.includes("Judo")) return `${base} bg-gradient-to-br from-amber-50 to-white border-amber-100 text-amber-700 shadow-sm`;
-  if (text.includes("Wrestling")) return `${base} bg-gradient-to-br from-orange-50 to-white border-orange-100 text-orange-700 shadow-sm`;
-  if (text.includes("Leglocks")) return `${base} bg-gradient-to-br from-purple-50 to-white border-purple-100 text-purple-700 shadow-sm`;
-  if (text.includes("Kids")) return `${base} bg-gradient-to-br from-green-50 to-white border-green-100 text-green-700 shadow-sm`;
-  if (text.includes("Open Mat") || text.includes("Mixto")) return `${base} bg-white border-zinc-200 text-zinc-800 shadow-sm`;
-  
-  return "text-zinc-600 text-xs";
+const getClassStyles = (text: string) => {
+  const base = "flex flex-col gap-1 p-3 rounded-2xl border w-full transition-all duration-300 hover:scale-[1.03] hover:shadow-lg cursor-default";
+
+  if (text.includes("Particulares")) return base + " bg-zinc-50 border-zinc-200 text-zinc-600";
+  if (text.includes("Fundamentos")) return base + " bg-gradient-to-br from-red-50 to-white border-red-100 text-red-700 shadow-sm";
+  if (text.includes("Avanzados")) return base + " bg-slate-100 border-slate-200 text-slate-800 shadow-sm";
+  if (text.includes("Takedowns")) return base + " bg-gradient-to-br from-orange-50 to-white border-orange-100 text-orange-700 shadow-sm";
+  if (text.includes("Leg Lock")) return base + " bg-gradient-to-br from-purple-50 to-white border-purple-100 text-purple-700 shadow-sm";
+  if (text.includes("Kids") || text.includes("Cadete") || text.includes("Juvenil")) return base + " bg-gradient-to-br from-green-50 to-white border-green-100 text-green-700 shadow-sm";
+  if (text.includes("Solo Luchas")) return base + " bg-gradient-to-br from-amber-50 to-white border-amber-100 text-amber-700 shadow-sm";
+
+  return base + " bg-white border-zinc-200 text-zinc-800 shadow-sm";
 };
 
 // ============================================================
@@ -98,7 +163,8 @@ export default function LandingPage() {
   const [openFaq, setOpenFaq] = React.useState<number | null>(null); // Controla qué pregunta del FAQ está abierta
   const [showSplash, setShowSplash] = React.useState(true); // Controla la pantalla de carga inicial
   const [isMenuOpen, setIsMenuOpen] = React.useState(false); // Controla el menú móvil
-  const [heroImgIndex, setHeroImgIndex] = React.useState(0); // Controla el carrusel de imágenes del Hero
+  const [heroImgIndex, setHeroImgIndex] = React.useState(0);
+  const [activeDay, setActiveDay] = React.useState(0); // Controla el carrusel de imágenes del Hero
   const carouselRef = React.useRef<HTMLDivElement>(null);
   const [constraints, setConstraints] = React.useState({ left: 0, right: 0 });
 
@@ -374,66 +440,55 @@ export default function LandingPage() {
             <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter italic text-black">Horario Elite</h2>
           </div>
 
-          <div className="bg-white rounded-[3rem] p-4 sm:p-12 border-2 border-zinc-200 shadow-2xl relative overflow-hidden">
-            {/* Horario para Computador (Grid) */}
-            <div className="hidden xl:block">
-              <div className="grid grid-cols-8 gap-4">
-                <div className="p-4 flex items-end justify-center">
-                  <span className="text-[9px] font-black uppercase tracking-widest text-zinc-300">Bloque</span>
-                </div>
-                {["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"].map((day) => (
-                  <div key={day} className="p-5 bg-zinc-100 rounded-2xl flex items-center justify-center border border-black/[0.03] hover:bg-black group transition-all duration-500">
-                    <span className="text-[11px] font-black uppercase tracking-widest text-black group-hover:text-white italic">{day}</span>
+          <div className="bg-white rounded-[3rem] p-5 sm:p-10 border-2 border-zinc-200 shadow-2xl relative overflow-hidden">
+
+            {/* Vista Escritorio: 7 columnas */}
+            <div className="hidden lg:grid grid-cols-7 gap-4 items-start">
+              {SCHEDULE_DATA.map((col: any) => (
+                <div key={col.day} className="flex flex-col gap-3">
+                  <div className="p-4 bg-zinc-100 rounded-2xl flex items-center justify-center border border-black/[0.03] hover:bg-black group transition-all duration-500">
+                    <span className="text-[11px] font-black uppercase tracking-widest text-black group-hover:text-white italic">{col.day}</span>
                   </div>
-                ))}
-                
-                {/* Filas de tiempo y clases */}
-                {SCHEDULE_DATA.map((row: any, i) => (
-                  <React.Fragment key={i}>
-                    <div className="p-4 flex items-center justify-center bg-white rounded-2xl border border-black/5 shadow-sm">
-                      <span className="text-[11px] font-black text-black italic">{row.time}</span>
+                  {col.classes.map((cls: any, i: number) => (
+                    <div key={i} className={getClassStyles(cls.name)}>
+                      <span className="text-[11px] font-black italic leading-none">{cls.time}</span>
+                      <span className="text-[10px] font-black leading-tight uppercase">{cls.name}</span>
+                      {cls.note && <span className="text-[9px] font-bold opacity-60 leading-tight">{cls.note}</span>}
                     </div>
-                    {[row.mon, row.tue, row.wed, row.thu, row.fri, row.sat, row.sun].map((cell, j) => (
-                      <div key={j} className="h-28">
-                        <div className={getCellStyles(cell || "")}>
-                          <span className="text-[10px] font-black leading-tight uppercase">{cell && cell !== "Cerrado" ? cell : ""}</span>
-                        </div>
-                      </div>
-                    ))}
-                  </React.Fragment>
-                ))}
-              </div>
+                  ))}
+                </div>
+              ))}
             </div>
 
-            {/* Horario para Móvil (Tarjetas Deslizables) */}
-            <div className="xl:hidden">
-              <div className="flex overflow-x-auto pb-8 gap-3 no-scrollbar snap-x">
-                {["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"].map((day, idx) => (
-                  <button key={day} onClick={() => document.getElementById(`day-card-${idx}`)?.scrollIntoView({ behavior: 'smooth', inline: 'start' })} className="flex-shrink-0 px-8 py-4 rounded-full bg-white border border-black/5 text-[10px] font-black uppercase hover:bg-red-600 hover:text-white transition-all">
-                    {day}
+            {/* Vista Movil / Tablet: selector de dia */}
+            <div className="lg:hidden">
+              <div className="flex overflow-x-auto pb-6 gap-2 no-scrollbar">
+                {SCHEDULE_DATA.map((col: any, idx: number) => (
+                  <button
+                    key={col.day}
+                    onClick={() => setActiveDay(idx)}
+                    className={"flex-shrink-0 px-6 py-3 rounded-full border text-[10px] font-black uppercase tracking-widest transition-all " + (activeDay === idx ? "bg-red-600 text-white border-red-600 shadow-lg shadow-red-600/20" : "bg-white text-zinc-600 border-black/10 hover:border-red-600/40")}
+                  >
+                    {col.day}
                   </button>
                 ))}
               </div>
-              <div className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-6">
-                {["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"].map((day, dayIdx) => (
-                  <div key={dayIdx} id={`day-card-${dayIdx}`} className="min-w-full snap-start">
-                    <div className="bg-white rounded-[2.5rem] p-8 border border-black/5 shadow-xl">
-                      <h3 className="text-4xl font-black uppercase italic mb-10">{day}</h3>
-                      <div className="space-y-6">
-                        {SCHEDULE_DATA.map((row: any, i) => (
-                          <div key={i} className="flex items-center gap-6">
-                            <div className="w-20 text-[9px] font-black text-zinc-400 italic">{row.time}</div>
-                            <div className="flex-grow">
-                              <div className={getCellStyles(row[["mon", "tue", "wed", "thu", "fri", "sat", "sun"][dayIdx]] || "")}>
-                                <span className="text-xs font-black uppercase italic">{row[["mon", "tue", "wed", "thu", "fri", "sat", "sun"][dayIdx]] || "Cerrado"}</span>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
+
+              <div className="bg-white rounded-[2rem] p-6 border border-black/5 shadow-xl">
+                <h3 className="text-3xl font-black uppercase italic mb-8">{SCHEDULE_DATA[activeDay].day}</h3>
+                <div className="space-y-4">
+                  {SCHEDULE_DATA[activeDay].classes.map((cls: any, i: number) => (
+                    <div key={i} className="flex items-center gap-4">
+                      <div className="w-16 shrink-0 text-[11px] font-black text-zinc-500 italic">{cls.time}</div>
+                      <div className="flex-grow">
+                        <div className={getClassStyles(cls.name)}>
+                          <span className="text-xs font-black uppercase italic leading-tight">{cls.name}</span>
+                          {cls.note && <span className="text-[10px] font-bold opacity-60">{cls.note}</span>}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </div>
