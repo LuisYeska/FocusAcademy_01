@@ -132,6 +132,112 @@ const AFFILIATES_DATA = [
   { name: "Olas Combat Jiujitsu", image: "/Logos/filiales/olascombat.png", url: "#", location: "" },
 ];
 
+// Planes y precios (3 categorias)
+const PLANS_DATA = [
+  {
+    category: "Adultos BJJ",
+    plans: [
+      {
+        name: "Plan Flow",
+        access: "2 clases semanales BJJ Gi & No Gi",
+        price: "$60.000",
+        note: "+ $30.000 matrícula anual",
+        extra: "Matrícula gratis en planes por periodo",
+        periods: [
+          { label: "Trimestral", value: "$171.000" },
+          { label: "Semestral", value: "$324.000" },
+          { label: "Anual", value: "$612.000", gift: "Polera de regalo" }
+        ]
+      },
+      {
+        name: "Plan Premium",
+        access: "Acceso ilimitado BJJ Gi & No Gi",
+        price: "$80.000",
+        note: "+ $30.000 matrícula anual",
+        extra: "Pago TAP: $72.000 con matrícula gratis",
+        highlight: true,
+        periods: [
+          { label: "Trimestral", value: "$216.000" },
+          { label: "Semestral", value: "$408.000" },
+          { label: "Anual", value: "$720.000", gift: "Polera + Rashguard de regalo" }
+        ]
+      },
+      {
+        name: "Pase Diario",
+        access: "Una clase, sin compromiso",
+        price: "$20.000",
+        note: "Efectivo o transferencia",
+        periods: []
+      }
+    ]
+  },
+  {
+    category: "Kids & Juveniles",
+    plans: [
+      {
+        name: "Plan Flow",
+        access: "1 clase por semana",
+        price: "$45.000",
+        note: "Kids, Cadetes y Juveniles",
+        periods: [
+          { label: "Trimestral", value: "$121.500" },
+          { label: "Semestral", value: "$229.500" },
+          { label: "Anual", value: "$432.000" }
+        ]
+      },
+      {
+        name: "Plan Premium",
+        access: "Acceso ilimitado a las clases",
+        price: "$60.000",
+        note: "Kids, Cadetes y Juveniles",
+        highlight: true,
+        periods: [
+          { label: "Trimestral", value: "$162.000" },
+          { label: "Semestral", value: "$306.000" },
+          { label: "Anual", value: "$576.000", gift: "Polera de regalo" }
+        ]
+      },
+      {
+        name: "Pase Diario",
+        access: "Una clase, sin compromiso",
+        price: "$15.000",
+        note: "Efectivo o transferencia",
+        periods: []
+      }
+    ]
+  },
+  {
+    category: "Preparación Física",
+    footnote: "Todas nuestras clases están dirigidas por un profesor de educación física y/o preparador físico.",
+    plans: [
+      {
+        name: "Plan Silver",
+        access: "2 veces por semana",
+        price: "$80.000",
+        note: "Valor referencial por clase: $10.000",
+        extra: "15% de descuento para alumnos de Jiu Jitsu",
+        periods: []
+      },
+      {
+        name: "Plan Gold",
+        access: "3 veces por semana",
+        price: "$100.000",
+        note: "Valor referencial por clase: $8.333",
+        extra: "15% de descuento para alumnos de Jiu Jitsu",
+        highlight: true,
+        periods: []
+      },
+      {
+        name: "Pase Diario",
+        access: "Una clase, sin compromiso",
+        price: "$20.000",
+        note: "Efectivo o transferencia",
+        periods: []
+      }
+    ]
+  }
+];
+
 // ============================================================
 // 2. UTILIDADES DE ESTILO (Colores dinámicos del horario)
 // ============================================================
@@ -164,7 +270,8 @@ export default function LandingPage() {
   const [showSplash, setShowSplash] = React.useState(true); // Controla la pantalla de carga inicial
   const [isMenuOpen, setIsMenuOpen] = React.useState(false); // Controla el menú móvil
   const [heroImgIndex, setHeroImgIndex] = React.useState(0);
-  const [activeDay, setActiveDay] = React.useState(0); // Controla el carrusel de imágenes del Hero
+  const [activeDay, setActiveDay] = React.useState(0);
+  const [activeCat, setActiveCat] = React.useState(0); // Controla el carrusel de imágenes del Hero
   const carouselRef = React.useRef<HTMLDivElement>(null);
   const [constraints, setConstraints] = React.useState({ left: 0, right: 0 });
 
@@ -408,24 +515,44 @@ export default function LandingPage() {
       {/* SECCIÓN PROGRAMAS */}
       <section id="programas" className="py-32 bg-zinc-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-24 gap-12">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-12">
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-3 text-red-600 font-black uppercase tracking-[0.5em] text-[10px] bg-red-50 px-4 py-1.5 rounded-full border border-red-100 shadow-sm mb-8">
                 <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse" />
                 Entrenamiento
               </div>
-              <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter italic text-black">Nuestros Programas</h2>
+              <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter italic text-black">Planes y Valores</h2>
             </div>
             <p className="text-zinc-600 text-lg lg:text-xl font-medium max-w-sm border-l-2 border-black/10 pl-8">
-              Metodologías específicas para cada etapa de tu aprendizaje.
+              Elige el plan que se ajusta a tu ritmo y a tu etapa de aprendizaje.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <ModernProgramCard title="Adulto No-Gi" desc="Lucha sin kimono. Mejora velocidad y explosividad." price="Especializado" features={["Lucha Libre", "Submission", "Estrategia No-Gi"]} />
-            <ModernProgramCard title="Plan Full" desc="Acceso ilimitado. La experiencia completa." price="Todos los Días" features={["BJJ Gi & No-Gi", "Wrestling & Judo", "Todas las Clases"]} highlight />
-            <ModernProgramCard title="Focus Kids" desc="Disciplina y respeto para los más pequeños." price="4 a 12 años" features={["Anti-bullying", "Valores", "Motricidad"]} />
+          {/* Pestanias de categoria */}
+          <div className="flex flex-wrap gap-3 mb-12">
+            {PLANS_DATA.map((cat: any, idx: number) => (
+              <button
+                key={cat.category}
+                onClick={() => setActiveCat(idx)}
+                className={"px-7 py-4 rounded-2xl border text-[11px] font-black uppercase tracking-widest transition-all " + (activeCat === idx ? "bg-red-600 text-white border-red-600 shadow-lg shadow-red-600/20" : "bg-white text-zinc-600 border-black/10 hover:border-red-600/40")}
+              >
+                {cat.category}
+              </button>
+            ))}
           </div>
+
+          {/* Tarjetas de la categoria activa */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-stretch">
+            {PLANS_DATA[activeCat].plans.map((p: any) => (
+              <PlanCard key={p.name} plan={p} category={PLANS_DATA[activeCat].category} />
+            ))}
+          </div>
+
+          {PLANS_DATA[activeCat].footnote && (
+            <p className="mt-10 text-center text-zinc-500 text-sm font-medium max-w-2xl mx-auto">
+              {PLANS_DATA[activeCat].footnote}
+            </p>
+          )}
         </div>
       </section>
 
@@ -622,26 +749,58 @@ function InstructorCard({ name, role, rank, specialty, image }: any) {
 }
 
 /**
- * Tarjeta de Programa (Ej: Adulto No-Gi, Kids)
+ * Tarjeta de Plan (precio mensual + valores por periodo)
  */
-function ModernProgramCard({ title, desc, price, features, highlight = false }: any) {
+function PlanCard({ plan, category }: any) {
+  const wa = "https://wa.me/56945908324?text=" + encodeURIComponent("Hola Focus Academy! Me interesa el " + plan.name + " de " + category + ". Me pueden dar mas informacion?");
+  const hi = plan.highlight;
+
   return (
-    <motion.div whileHover={{ scale: 1.02 }} className={`relative p-12 rounded-[3rem] flex flex-col transition-all overflow-hidden h-full ${highlight ? 'bg-zinc-900 text-white shadow-2xl shadow-black/20' : 'bg-white border border-black/5 shadow-sm'}`}>
-      {highlight && <div className="absolute top-6 right-6 bg-red-600 text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">Popular</div>}
-      <div className={`inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest mb-6 px-3 py-1 rounded-md border ${highlight ? 'bg-white/10 text-white' : 'bg-red-50 text-red-600 border-red-100'}`}>{price}</div>
-      <h4 className="text-3xl font-black uppercase italic mb-6">{title}</h4>
-      <p className="mb-10 text-sm opacity-70">{desc}</p>
-      <ul className="space-y-5 mb-12 flex-grow">
-        {features.map((f: any, i: any) => (
-          <li key={i} className="flex items-center gap-4 text-sm font-bold">
-            <CheckCircle2 size={18} className={highlight ? 'text-white' : 'text-red-600'} />
-            <span className="opacity-80">{f}</span>
-          </li>
-        ))}
-      </ul>
-      <button className={`w-full py-5 rounded-2xl font-black uppercase tracking-widest text-[10px] ${highlight ? 'bg-red-600 text-white' : 'bg-black text-white'}`}>
-        Más Información
-      </button>
+    <motion.div whileHover={{ scale: 1.02 }} className={"relative p-10 rounded-[3rem] flex flex-col transition-all overflow-hidden h-full " + (hi ? "bg-zinc-900 text-white shadow-2xl shadow-black/20" : "bg-white border border-black/5 shadow-sm")}>
+      {hi && <div className="absolute top-6 right-6 bg-red-600 text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">Popular</div>}
+
+      <div className={"inline-flex self-start items-center text-[10px] font-black uppercase tracking-widest mb-6 px-3 py-1 rounded-md border " + (hi ? "bg-white/10 text-white border-white/10" : "bg-red-50 text-red-600 border-red-100")}>
+        {plan.access}
+      </div>
+
+      <h4 className="text-3xl font-black uppercase italic mb-5">{plan.name}</h4>
+
+      <div className="flex items-end gap-2 mb-2">
+        <span className="text-5xl font-black tracking-tighter">{plan.price}</span>
+        {plan.periods.length > 0 && <span className="text-sm font-bold opacity-50 mb-2">/mes</span>}
+      </div>
+      <p className="text-xs font-bold opacity-60 mb-6">{plan.note}</p>
+
+      {plan.extra && (
+        <div className={"flex items-start gap-3 text-xs font-bold mb-6 p-3 rounded-xl " + (hi ? "bg-white/5" : "bg-zinc-50")}>
+          <CheckCircle2 size={16} className={"shrink-0 mt-0.5 " + (hi ? "text-white" : "text-red-600")} />
+          <span className="opacity-80">{plan.extra}</span>
+        </div>
+      )}
+
+      {plan.periods.length > 0 && (
+        <div className={"mt-auto pt-6 border-t " + (hi ? "border-white/10" : "border-black/5")}>
+          <p className="text-[10px] font-black uppercase tracking-widest opacity-40 mb-4">Valor por periodo</p>
+          <ul className="space-y-3 mb-8">
+            {plan.periods.map((pe: any) => (
+              <li key={pe.label} className="flex items-baseline justify-between gap-3">
+                <span className="text-xs font-bold opacity-60">{pe.label}</span>
+                <span className="flex-grow border-b border-dotted border-current opacity-15" />
+                <span className="text-sm font-black">{pe.value}</span>
+              </li>
+            ))}
+          </ul>
+          {plan.periods.filter((pe: any) => pe.gift).map((pe: any) => (
+            <p key={pe.label} className={"text-[10px] font-black uppercase tracking-wider mb-6 " + (hi ? "text-red-500" : "text-red-600")}>
+              {pe.label}: {pe.gift}
+            </p>
+          ))}
+        </div>
+      )}
+
+      <a href={wa} target="_blank" className={"mt-auto w-full py-5 rounded-2xl font-black uppercase tracking-widest text-[10px] text-center transition-all " + (hi ? "bg-red-600 text-white hover:bg-red-700" : "bg-black text-white hover:bg-zinc-800")}>
+        Quiero este plan
+      </a>
     </motion.div>
   );
 }
