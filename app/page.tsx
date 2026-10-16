@@ -118,7 +118,7 @@ const INSTRUCTORS_DATA = [
   { name: "Diego Lobos", role: "BJJ Instructor", rank: "Black Belt", specialty: "Escuela Focus", image: "/images/profesores/Diego Lobos.png" },
   { name: "Esteban Pardo", role: "BJJ Instructor", rank: "Black Belt", specialty: "Escuela Animal Grip", image: "/images/profesores/negrito.png" },
   { name: "Sebastián Cadena", role: "Submission Specialist", rank: "Brown Belt", specialty: "Escuela Focus", image: "/images/profesores/Seba Cadenas.png" },
-  { name: "Ricardo Soto", role: "BJJ Instructor", rank: "Brown Belt", specialty: "Escuela Focus", image: "/images/profesores/Ricardo Soto.jpeg" }
+  { name: "Ricardo Soto", role: "BJJ Instructor", rank: "Purple Belt", specialty: "Escuela Focus", image: "/images/profesores/Ricardo Soto.jpeg" }
 ];
 
 // Listado de Academias Filiales
