@@ -693,7 +693,7 @@ export default function LandingPage() {
               <ul className="space-y-6">
                 <FooterContactItem icon={<MapPin size={20} className="text-red-600" />} text="Providencia, Santiago, Chile" />
                 <FooterContactItem icon={<Phone size={20} className="text-red-600" />} text="+56 9 4590 8324" />
-                <FooterContactItem icon={<MapPin size={20} className="text-red-600" />} text="Próximamente La Reina" />
+                <FooterContactItem icon={<MapPin size={20} className="text-red-600" />} text="Av. Echeñique 8490, local 5, La Reina" href="https://www.google.com/maps/search/?api=1&query=Focus+Academy+La+Reina" />
               </ul>
             </div>
 
@@ -821,13 +821,25 @@ function FaqItem({ isOpen, toggle, question, answer }: any) {
 }
 
 /**
- * Elemento de contacto en el Footer
+ * Elemento de contacto en el Footer (opcionalmente con enlace)
  */
-function FooterContactItem({ icon, text }: any) {
-  return (
-    <li className="flex items-start gap-5 group">
+function FooterContactItem({ icon, text, href }: any) {
+  const inner = (
+    <>
       <div className="transition-transform group-hover:scale-110">{icon}</div>
       <span className="text-zinc-600 font-medium group-hover:text-black transition-colors">{text}</span>
-    </li>
+    </>
   );
+
+  if (href) {
+    return (
+      <li className="group">
+        <a href={href} target="_blank" rel="noopener noreferrer" className="flex items-start gap-5">
+          {inner}
+        </a>
+      </li>
+    );
+  }
+
+  return <li className="flex items-start gap-5 group">{inner}</li>;
 }
