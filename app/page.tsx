@@ -213,17 +213,15 @@ const PLANS_DATA = [
       {
         name: "Plan Silver",
         access: "2 veces por semana",
-        price: "$80.000",
+        price: "$90.000",
         note: "Valor referencial por clase: $10.000",
-        extra: "15% de descuento para alumnos de Jiu Jitsu",
         periods: []
       },
       {
         name: "Plan Gold",
         access: "3 veces por semana",
-        price: "$100.000",
-        note: "Valor referencial por clase: $8.333",
-        extra: "15% de descuento para alumnos de Jiu Jitsu",
+        price: "$120.000",
+        note: "Valor referencial por clase: $10.000",
         highlight: true,
         periods: []
       },
