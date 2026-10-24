@@ -236,6 +236,22 @@ const PLANS_DATA = [
   }
 ];
 
+// Sedes de la academia
+const SEDES_DATA = [
+  {
+    short: "Providencia",
+    address: "Av. Francisco Bilbao 2970, Providencia",
+    maps: "https://www.google.com/maps/search/?api=1&query=Focus+Academy+Brazilian+Jiu+Jitsu+Fitness",
+    embed: "https://maps.google.com/maps?q=-33.434348,-70.5881242&z=16&output=embed"
+  },
+  {
+    short: "La Reina",
+    address: "Av. Echeñique 8490, local 5, La Reina",
+    maps: "https://www.google.com/maps/search/?api=1&query=Focus+Academy+La+Reina",
+    embed: "https://maps.google.com/maps?q=-33.4416763,-70.5434595&z=16&output=embed"
+  }
+];
+
 // ============================================================
 // 2. UTILIDADES DE ESTILO (Colores dinámicos del horario)
 // ============================================================
@@ -269,7 +285,8 @@ export default function LandingPage() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false); // Controla el menú móvil
   const [heroImgIndex, setHeroImgIndex] = React.useState(0);
   const [activeDay, setActiveDay] = React.useState(0);
-  const [activeCat, setActiveCat] = React.useState(0); // Controla el carrusel de imágenes del Hero
+  const [activeCat, setActiveCat] = React.useState(0);
+  const [activeSede, setActiveSede] = React.useState(0); // Controla el carrusel de imágenes del Hero
   const carouselRef = React.useRef<HTMLDivElement>(null);
   const [constraints, setConstraints] = React.useState({ left: 0, right: 0 });
 
@@ -691,17 +708,30 @@ export default function LandingPage() {
             <div className="md:col-span-3">
               <h4 className="font-black uppercase tracking-widest text-xs mb-10">Contacto</h4>
               <ul className="space-y-6">
-                <FooterContactItem icon={<MapPin size={20} className="text-red-600" />} text="Providencia, Santiago, Chile" />
+                {SEDES_DATA.map((s: any) => (
+                  <FooterContactItem key={s.short} icon={<MapPin size={20} className="text-red-600" />} text={s.address} href={s.maps} />
+                ))}
                 <FooterContactItem icon={<Phone size={20} className="text-red-600" />} text="+56 9 4590 8324" />
-                <FooterContactItem icon={<MapPin size={20} className="text-red-600" />} text="Av. Echeñique 8490, local 5, La Reina" href="https://www.google.com/maps/search/?api=1&query=Focus+Academy+La+Reina" />
               </ul>
             </div>
 
             {/* Mapa de Ubicación */}
             <div className="md:col-span-4">
-              <div className="w-full h-64 rounded-3xl overflow-hidden shadow-lg">
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.575651241463!2d-70.5880549!3d-33.434306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf0847984b01%3A0x63a6ceedf529922a!2sAv.%20Francisco%20Bilbao%202970!5e0!3m2!1sen!2scl!4v1776543989865" 
+              <div className="flex gap-2 mb-4">
+                {SEDES_DATA.map((s: any, i: number) => (
+                  <button
+                    key={s.short}
+                    onClick={() => setActiveSede(i)}
+                    className={"px-5 py-2.5 rounded-xl border text-[10px] font-black uppercase tracking-widest transition-all " + (activeSede === i ? "bg-red-600 text-white border-red-600" : "bg-white text-zinc-500 border-black/10 hover:border-red-600/40")}
+                  >
+                    {s.short}
+                  </button>
+                ))}
+              </div>
+              <div className="w-full h-56 rounded-3xl overflow-hidden shadow-lg">
+                <iframe
+                  key={activeSede}
+                  src={SEDES_DATA[activeSede].embed}
                   width="100%" height="100%" style={{ border: 0 }} allowFullScreen={true} loading="lazy" className="grayscale contrast-125 hover:grayscale-0 transition-all duration-700">
                 </iframe>
               </div>
